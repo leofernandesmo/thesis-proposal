@@ -1,0 +1,281 @@
+%% Template para dissertação/tese na classe UFPEthesis
+%% versão 0.9.2
+%% (c) 2005 Paulo G. S. Fonseca
+%% www.cin.ufpe.br/~paguso/ufpethesis
+
+%% Carrega a classe ufpethesis
+%% Opções: * Idiomas
+%%           pt   - português (padrão)
+%%           en   - inglês
+%%         * Tipo do Texto
+%%           bsc  - para monografias de graduação
+%%           msc  - para dissertações de mestrado (padrão)
+%%           qual - exame de qualificação doutorado
+%%           prop - proposta de tese doutorado
+%%           phd  - para teses de doutorado
+%%         * Mídia
+%%           scr  - para versão eletrônica (PDF) / consulte o guia do usuario
+%%         * Estilo
+%%           classic - estilo original à la TAOCP (deprecated)
+%%           std     - novo estilo à la CUP (padrão)
+%%         * Paginação
+%%           oneside - para impressão em face única
+%%           twoside - para impressão em frente e verso (padrão)
+\documentclass[en, qual]{ufpethesis}
+
+\usepackage{colortbl}
+\usepackage{color}
+%\usepackage[table]{xcolor}
+\usepackage{microtype}
+\usepackage{bibentry}
+\usepackage{subfigure}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{pdfpages}
+\usepackage{caption}
+\usepackage{lipsum}
+\usepackage{sectsty}
+\usepackage{amsmath}
+
+%pacotes que vieram do artigo do GPCE
+\usepackage{url}
+\usepackage{breakurl}
+\usepackage{graphicx}
+\usepackage{mdframed}
+\usepackage{balance}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{makecell}
+%\usepackage{rotating}
+%\setlength{\rotFPtop}{0pt plus 1fil}
+\usepackage[T1]{fontenc}
+\usepackage{inconsolata}
+
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+
+\usepackage{listings}
+% \lstset{language=Java,
+%   showspaces=false,
+%   showtabs=false,
+%   breaklines=true,
+%   showstringspaces=false,
+%   breakatwhitespace=true,
+%   commentstyle=\color{pgreen},
+%   keywordstyle=\color{pblue},
+%   stringstyle=\color{pred},
+%   basicstyle=\ttfamily,
+%   %numbers=right,                    
+%   %numbersep=5pt,
+%   frame = single,
+%   framexleftmargin=15pt,
+%   moredelim=[il][\textcolor{pgrey}]{$ $},
+%   moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%}
+% }
+
+
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+
+\lstset{language=Java,
+basicstyle=\ttfamily,
+keywordstyle=\color{javapurple}\bfseries,
+stringstyle=\color{javared},
+commentstyle=\color{javagreen},
+morecomment=[s][\color{javadocblue}]{/**}{*/},
+numbers=left,
+numberstyle=\tiny\color{black},
+stepnumber=2,
+numbersep=10pt,
+tabsize=4,
+showspaces=false,
+showstringspaces=false
+frame = single,
+framexleftmargin=15pt
+}
+
+
+\newcommand{\todo}[1]{{\color{red} [#1]}}
+%\newcommand{\GeneratedPrograms}{500~}
+\newcommand{\AnalyzedPrograms}{50~}
+\newcommand{\NumberOfIdentifiedHeuristics}{48~}
+\newcommand{\NumberOfImplementedHeuristics}{19~}
+\newcommand{\NumberOfNotImplementedHeuristics}{18~}
+\newcommand{\NumberOfNewHeuristics}{37~} %14 new heuristics implemented
+
+\newcommand{\NumberOfIdentifiedRulesForEquivalent}{10~}
+\newcommand{\NumberOfIdentifiedRulesForDuplicated}{38~}
+\newcommand{\NumberOfNewRulesForEquivalent}{2~}
+\newcommand{\NumberOfNewRulesForDuplicated}{35~}
+
+\newcommand{\jdolly}[1]{\textsc{JDolly}}
+\newcommand{\mujava}[1]{\textsc{Mujava}}
+\newcommand{\major}[1]{\textsc{Major}}
+\newcommand{\pit}[1]{\textsc{Pit}}
+\newcommand{\randoop}[1]{\textsc{Randoop}}
+
+%\epstopdfsetup{update}
+
+\linespread{1.3}
+
+
+%% PreРmbulo:
+%% coloque aqui o seu preРmbulo LaTeX, i.e., declaraусo de pacotes,
+%% (re)definiушes de macros, medidas, etc.
+
+%% Identificaусo:
+
+% Universidade
+% e.g. \university{Universidade de Campinas}
+% Na UFPE, comente a linha a seguir
+\university{Universidade Federal de Pernambuco - UFPE}
+
+% Endereуo (cidade)
+% e.g. \address{Campinas}
+% Na UFPE, comente a linha a seguir
+\address{Recife - PE}
+
+% Instituto ou Centro AcadЖmico
+% e.g. \institute{Centro de CiЖncias Exatas e da Natureza}
+% Comente se nсo se aplicar
+\institute{Centro de Informática - CIn}
+
+% Departamento acadЖmico
+% e.g. \department{Departamento de Informрtica}
+% Comente se nсo se aplicar
+%\department{<NOME DO DEPARTAMENTO>}
+
+% Programa de pзs-graduaусo
+% e.g. \program{Pзs-graduaусo em CiЖncia da Computaусo}
+\program{Pós-Graduação em Ciência da Computação}
+
+% ┴rea de titulaусo
+% e.g. \majorfield{CiЖncia da Computaусo}
+\majorfield{Ciência da Computação}
+
+% Tьtulo da dissertaусo/tese
+% e.g. \title{Sobre a conjectura $P=NP$}
+\title{Avoiding Useless Mutants}
+
+% Data da defesa
+% e.g. \date{19 de fevereiro de 2003}
+\date{Setembro de 2017}
+
+% Autor
+% e.g. \author{Josж da Silva}
+\author{Leonardo Fernandes Mendonça de Oliveira}
+
+\adviser{André Luís de Medeiros Santos}
+\coadviser{Márcio de Medeiros Ribeiro}
+
+\usepackage[raiselinks=false,colorlinks=true,citecolor=blue,urlcolor=blue,linkcolor=blue,bookmarksopen=true,breaklinks=true]{hyperref}
+
+%Inicio do documento
+\begin{document}
+
+%%
+%% Parte prж-textual
+%%
+\frontmatter
+
+% Folha de rosto
+% Comente para ocultar
+\frontpage
+
+% Portada (apresentaусo)
+% Comente para ocultar
+\presentationpage
+
+% Dedicatзria
+% Comente para ocultar
+% \begin{dedicatory}
+% \end{dedicatory}
+
+% Agradecimentos
+% Se preferir, crie um arquivo Я parte e o inclua via \include{}
+% \acknowledgements
+
+% Epьgrafe
+% Comente para ocultar
+% e.g.
+% \begin{epigraph}[Tarde, 1919]{Olavo Bilac}
+% ┌ltima flor do Lрcio, inculta e bela,\\
+% ╔s, a um tempo, esplendor e sepultura;\\
+% Ouro nativo, que, na ganga impura,\\
+% A bruta mina entre os cascalhos vela.
+% \end{epigraph}
+% \begin{epigraph}[]{Albert Einstein}
+%Penso 99 vezes e nada descubro. Entro em silЖncio profundo. Eis que
+%a verdade me ж revelada.
+% I think 99 times and do not discover anything. I stop thinking, dive
+% into a deep silence and the truth is revealed to me.
+% \end{epigraph}
+
+% Resumo em PortuguЖs
+% Se preferir, crie um arquivo Я parte e o inclua via \include{}
+%\resumo
+
+% Palavras-chave do resumo em PortuguЖs
+%\begin{keywords}
+%\end{keywords}
+
+
+\abstract
+\input{abstract.tex}
+ 
+
+% Sumрrio
+% Comente para ocultar
+\tableofcontents
+
+% Lista de figuras
+% Comente para ocultar
+\listoffigures
+
+% Lista de tabelas
+% Comente para ocultar
+\listoftables
+
+% List of acronyms
+% Acronyms manual: http://linorg.usp.br/CTAN/macros/latex/contrib/acronym/acronym.pdf
+%\listofacronyms
+%\input{acronyms}
+
+\mainmatter
+
+\include{chapters/introduction}
+\include{chapters/background}
+\include{chapters/strategy}
+\include{chapters/rules}
+\include{chapters/evaluation}
+\include{chapters/implications}
+\include{chapters/related}
+\include{chapters/conclusion}
+% \include{chapters/nextsteps}
+
+\backmatter
+
+% Appendix
+\appendix
+\include{appendix/all-rules}
+% \include{appendix/table-journals}
+
+% References
+\bibliographystyle{plain}
+%\begin{references}
+\bibliography{references}
+%\end{references}
+
+
+
+% Cзlofon
+% Inclui uma pequena nota com referЖncia Я UFPEThesis
+% Comente para omitir
+\colophon
+
+
+\end{document}

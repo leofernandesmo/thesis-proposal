@@ -1,0 +1,420 @@
+\chapter{List of Rules}
+\label{ap:list-rules}
+In this appendix, we list the new rules identified.
+In Section \ref{sec:examples-of-rules} we have presented nine rules. 
+We now present the remaining 28.
+
+\section{E-Rules}
+
+\\
+\\
+% \textbf{E-Rule. PNC}~(\mujava{})\\
+% $term = new~C().v $\\
+% $transformations = \{ \\ \indent PNC(C, D)~=~D \\ \}$\\
+% $constraints = \{$ \\ \indent $D$~extends~$C$, \\ \indent $v$~exists only in$~C$, \\ \indent $D$~constructor does not change$~v$, \\ \indent $D$~constructor calls the same~$C$~constructor \\ \}$ $\\
+% \\
+% \\
+% \textbf{E-Rule. ISD}~(\mujava{})\\
+% $term = super.v$\\
+% $transformations = \{\\ \indent ISD(super.v) =~v \\\}$\\
+% $constraints = \{ \\ \indent v$~exists~only~in~superclasses \\ $\}$\\
+% \\
+% \\
+% \textbf{E-Rule. JID}~(\mujava{})\\
+% $term = v~:=~value$\\
+% $transformations = \{\\ \indent JID(value) =~; \\\}$\\
+% $constraints = \{ \\ \indent value$~assigned~to~$v$~is the default value of the type of $v$ \\ $\}$\\
+% \\
+% \\
+% \textbf{E-Rule. AOIS-01}~(\mujava{})\\
+% $term = v~:=~v~op1~exp$\\
+% $transformations = \{\\ \indent AOIS(v,~op2)~=~v~op2; \\\}$\\
+% $constraints = \{ $\\ 
+% \indent the use of~$v$~is the last one in the RHS, \\ 
+% \indent $op2 \in \{++, --\} \\ \}$\\
+% \\
+% \\
+% \textbf{E-Rule. AOIS-02}~(\mujava{})\\
+% $term = v$\\
+% $transformations = \{\\ \indent AOIS(v,~op)~=~v~op; \\\}$\\
+% $constraints = \{ \\$ 
+% \indent $v$ has a local scope, \\ 
+% \indent the use of~$v$~is the last one in its scope,  \\ 
+% \indent $op~\in~\{++,~--\}$ \\ 
+% \}\\
+% \\
+% \\
+% \textbf{E-Rule. ROR}*~(\mujava{})\\
+% $term = if~(exp1~op1~exp2){~return~exp1~}~else~{~return~exp2~}$\\
+% $transformations = \{\\ \indent ROR(op1,~op2)~=~op2; \\\}$\\
+% $constraints = \{ \\$ 
+% \indent $op1~\in \{>\}$ and $op2~\in \{>=\}$ or \\ 
+% \indent $op1~\in \{<\}$ and $op2~\in \{<=\}$ \\  \}\\
+% \\
+% *This rule also occur in ROR~(\major{}) and ConditionalBoundary~(\pit{}).
+% \\
+% \\
+\textbf{E-Rule. JSI}~(\mujava{})\\
+$term = type~v~:=~value$\\
+$transformations = \{\\ \indent JSI(type v)~=~static~type~v; \\\}$\\
+$constraints = \{ \\$ 
+\indent $v$ is read-only\\  \}\\
+
+% \textbf{E-Rule. MemberVariable}~(\pit{})\\
+% $term = v~:=~value$\\
+% $transformations = \{\\ \indent MemberVariable(value)~=~; \\\}$\\
+% $constraints = \{ \\$ 
+% \indent value assigned to $v$ is the default value for the type of $v$\\  \}\\
+% \\
+% \\
+
+%-----------------------------------------------------
+
+
+\section{D-Rules}
+
+% \textbf{D-Rule. ODL x VDL}~(\mujava{})\\
+% $term = exp~op~v $\\
+% $transformations = \{\\ \indent ODL(exp~op~v) = exp,\\ \indent VDL(exp~op~v) = exp\\\}$\\
+% \\
+% \\
+% \textbf{D-Rule. ROR x SDL}~(\mujava{})\\
+% $term = if~(exp_1~op~exp_2)~\{b\} $\\
+% $transformations = \{\\ \indent ROR(exp_1~op~exp_2) = false, \\ \indent SDL(if~(exp_1~op~exp_2)~\{b\}) =~; \\ \}$\\
+% \\
+% \\
+% \textbf{D-Rule. LOI x LOD}~(\mujava{})\\
+% $term = {\sim}v$\\
+% $transformations = \{\\ \indent LOI(v) = {\sim\sim} v,\\ \indent LOD({\sim}v) = v \\\}$\\
+% \\
+% \\
+% \textbf{D-Rule. SDL x SDL}~(\mujava{})\\
+% $term = if~(exp)~{~s~} $\\
+% $transformations = \{\\ \indent SDL(s) =~;, \\ \indent SDL(if~(exp)~s) =~; \\ \}$\\
+% $constraints = \{\\$ \indent $exp$~has~no~side~effect $\\\}$\\
+% \\
+% \\
+% \textbf{D-Rule. AOR x LVR}~(\major{})\\
+% $term =  exp~op_1~1 $\\
+% $transformations = \{ \\ \indent AOR(exp~op_1~1,~op_2) = exp~op_2~1, \\
+% \indent LVR(1)=0 \\ \}$\\
+% $constraints = \{\\ \indent op_1~\in~\{+, -\}~, \\ \indent op_2~\in~\{*, /\} \\ \}$\\
+% \\
+% \\
+% \textbf{D-Rule. InlineConstant x RemoveConditionals}~(\pit{})\\
+% $term = if~(exp)~{~v~:=~v~op~1} $\\
+% $transformations = \{ \\ \indent InlineConstant(1)~=~0,\\ \indent RemoveConditionals(exp)=false \\ \}$\\
+% $constraints = \{ \\$ \indent $op~\in~\{+, -\}$, \\ \indent $exp$~has~no~side~effect $ \\ \}$
+% \\
+% \\
+% \textbf{D-Rule. AODU x AOIU}~(\mujava{})\\
+% $term = v~:=~-exp;~b;~return~v$\\
+% $transformations = \{ \\ \indent AODU(-exp)~=~exp,\\ \indent AOIU(v)~=~-v \\ \}$\\
+% $constraints = \{ \\$ 
+% \indent there is no definition and use of $v$ in $b$, \\ 
+% \indent $v$ has local scope\\
+% \}\\
+% \\
+% \\
+% \textbf{D-Rule. LOI x LOI-01}~(\mujava{})\\
+% $term = v1 := v2; b; return~v1$\\
+% $transformations = \{\\ \indent LOI(v2) = {\sim} v2,\\ \indent LOI(v1) = {\sim} v1$\\\}\\
+% $constraints = \{\\$ 
+% \indent there is no definition and use of $v1$ in $b$, \\
+% \indent $v1$ has local scope \\
+% \}
+% \\
+% \\
+\textbf{D-Rule. SDL x VDL}~(\mujava{})\\
+$term = v~op; $\\
+$transformations = \{\\ \indent SDL(v~op)~=~;,\\ \indent VDL(v~op)~=~;\\\}$\\
+$constraints = \{ \\$ \indent $op~\in~\{++, --\}  \\ \}$
+\\
+\\
+\textbf{D-Rule. SDL x ODL}~(\mujava{})\\
+$term = v~:=~v~op~exp $\\
+$transformations = \{\\ \indent SDL(v~:=~v~op~exp)~=~;,\\ \indent ODL(op~exp)~=~;\\\}$\\
+$constraints = \{ \\$ \indent $op$ is any binary (infix) operator $\\ \}$
+\\
+\\
+\textbf{D-Rule. ODL x AODS}~(\mujava{})\\
+$term = op~v $\\
+$transformations = \{\\ \indent ODL(v~op)~=~v,\\ \indent AODS(op)~=~;\\\}$\\
+$constraints = \{ \\$ \indent $op~\in~\{++, --\}  \\ \}$
+\\
+\\
+% \textbf{D-Rule. LOI x LOI-2}~(\mujava{})\\
+% $term = if~(v1~op~v2) $\\
+% $transformations = \{\\ \indent LOI(v2) = {\sim} v2,\\ \indent LOI(v1) = {\sim} v1$\\\}\\
+% $constraints = \{ \\$ \indent $op~\in~\{==, !=\}  \\ \}$
+% \\
+% \\
+% \textbf{D-Rule. ODL x ODL}~(\mujava{})\\
+% $term = exp1~op~exp2 $\\
+% $transformations = \{\\ \indent ODL(exp1~op~exp2) = exp1,\\ \indent ODL(exp1~op~exp2) = exp2$\\\}\\
+% $constraints = \{ \\ \indent exp1$ is equal to $exp2 \\ \}$
+% \\
+% \\
+\textbf{D-Rule. IOD x ISI}~(\mujava{})\\
+$term = type f1()\{~f2()]~\};~type~f2()\{~\}; $\\
+$transformations = \{\\ \indent IOD(type~f2(){~}) = ;,\\ \indent ISI(f2()) = super.f2()$\\\}\\
+$constraints = \{ \\ \indent type~f2(){ }$ must overwriting $f2$ from superclass $\\ \}$
+\\
+\\
+\textbf{D-Rule. CDL x ODL}~(\mujava{})\\
+$term = exp~op~c $\\
+$transformations = \{\\ \indent CDL(c) = ;,\\ \indent ODL(exp~op~c) = exp$\\\}\\
+\\
+\\
+\textbf{D-Rule. AODU x ODL}~(\mujava{})\\
+$term = op~exp $\\
+$transformations = \{\\ \indent AODU(op) = ;,\\ \indent ODL(op~exp) = exp$\\\}\\
+$constraints = \{ \\$ \indent $op~\in~\{+, -\}  \\ \}$
+\\
+\\
+\textbf{D-Rule. COD x ODL}~(\mujava{})\\
+$term = !~exp $\\
+$transformations = \{\\ \indent COD(!) = ;,\\ \indent ODL(!~exp) = exp$\\\}\\
+\\
+\\
+\textbf{D-Rule. LOD x ODL}~(\mujava{})\\
+$term = {\sim}exp $\\
+$transformations = \{\\ \indent LOD({\sim}) = ;,\\ \indent ODL({\sim}exp) = exp$\\\}\\
+\\
+\\
+\textbf{D-Rule. COI x ROR}~(\mujava{})\\
+$term = (exp1~op1~exp2) $\\
+$transformations = \{\\ \indent COI(exp1~op1~exp2)~=~!(exp1~op1~exp2),\\ \indent ROR(op1)~=~op2$\\\}\\
+$constraints = \{ \\$ 
+\indent $op1~\in~\{>\}$ and $ op2~\in~\{<=\}~or~ $\\
+\indent $op1~\in~\{<\}$ and $ op2~\in~\{>=\}~or~  $\\ 
+\indent $op1~\in~\{>=\}$ and $ op2~\in~\{>\}~or~  $\\ 
+\indent $op1~\in~\{<=\}$ and $ op2~\in~\{<\}~or~  $\\ 
+\indent $op1~\in~\{==\}$ and $ op2~\in~\{!=\}~or~  $\\ 
+\indent $op1~\in~\{!=\}$ and $ op2~\in~\{==\}  $\\ 
+$\}$
+\\
+\\
+\textbf{D-Rule. COD x ROR}~(\mujava{})\\
+$term = !(exp1~op1~exp2) $\\
+$transformations = \{\\ \indent COD(!)~=~;,\\ \indent ROR(op1)~=~op2$\\\}\\
+$constraints = \{ \\$ 
+\indent $op1~\in~\{>\}$ and $ op2~\in~\{<=\}~or~ $\\
+\indent $op1~\in~\{<\}$ and $ op2~\in~\{>=\}~or~  $\\ 
+\indent $op1~\in~\{>=\}$ and $ op2~\in~\{>\}~or~  $\\ 
+\indent $op1~\in~\{<=\}$ and $ op2~\in~\{<\}~or~  $\\ 
+\indent $op1~\in~\{==\}$ and $ op2~\in~\{!=\}~or~  $\\ 
+\indent $op1~\in~\{!=\}$ and $ op2~\in~\{==\}  $\\ 
+$\}$
+\\
+\\
+\textbf{D-Rule. AORS x ODL}~(\mujava{})\\
+$term = return~op1~v) $\\
+$transformations = \{\\ \indent AORS(op1~v)~=~v~op2;,\\ \indent ODL(op1~v)~=~v$\\\}\\
+$constraints = \{ \\$ 
+\indent $v$ has a local scope, \\
+\indent the use of $v$ is the last one in its scope \\
+\indent $op1$ is pre-increment or pre-decrement, \\ 
+\indent $op2$ is post-increment or post-decrement \\ 
+$\}$
+\\
+\\
+\textbf{D-Rule. AORB x ODL}~(\mujava{})\\
+$term = exp~op1~1 $\\
+$transformations = \{\\ \indent AORB(op1)~=~op2,\\ \indent ODL(exp~op1~1)~=~exp$\\\}\\
+$constraints = \{ \\$ 
+\indent $op1~\in~\{+, -\}$  \\
+\indent $op2~\in~\{*, /\}$  \\ 
+$\}$
+\\
+\\
+% \textbf{D-Rule. AOIS x AOIS}~(\mujava{})\\
+% $term = v1~:=~v2;~b;~v3~:=~v2 $\\
+% $transformations = \{\\ \indent AOIS(v2, op1)~=~v2~op1;,\\ \indent AOIS(v2, op2)~=~op2~v2$\\\}\\
+% $constraints = \{ \\$ 
+% \indent there is no definition of $v2$ in $b$, \\
+% \indent $op1$ is post-increment and op2 is pre-increment operator or \\ 
+% \indent $op1$ is post-decrement and op2 is pre-decrement operator \\ 
+% $\}$
+% \\
+% \\
+\textbf{D-Rule. AOBR x AORB}~(\mujava{})\\
+$term = v~op1~1 $\\
+$transformations = \{\\ \indent AORB(op1, op2)~=~op2,\\ \indent AORB(op1, op3)~=~op3$\\\}\\
+$constraints = \{ \\$ 
+\indent $op1~\in~\{+, -\},  $\\
+\indent $op2$ and $op3~\in~\{*, /\}  $\\ 
+$\}$
+\\
+\\
+% \textbf{D-Rule. AOIU x AODU}~(\mujava{})\\
+% $term = v1~:=~-exp;~b;~return~v1 $\\
+% $transformations = \{\\ \indent AOIU(v1)~=~-v1,\\ \indent AODU(-exp)~=~exp$\\\}\\
+% $constraints = \{ \\$ 
+% \indent there is no definition of $v1$ in $b$,  \\
+% \indent $v1$ has a local scope \\ 
+% $\}$
+% \\
+% \\
+\textbf{D-Rule. AORS x LOI}~(\mujava{})\\
+$term = v~op1 $\\
+$transformations = \{\\ \indent AORS(v~op1, op2)~=~op2~v,\\ \indent LOI(v)~=~{\sim}v$\\\}\\
+$constraints = \{ \\$ 
+\indent $op1~\in~\{++\}  $\\ 
+\indent $op2~\in~\{--\}  $\\ 
+\indent $v$ must start with zero \\ 
+\indent the only definition of $v$ in the program is in this line line of the $term$\\ 
+$\}$
+\\
+\\
+\textbf{D-Rule. AORS x AOIU}~(\mujava{})\\
+$term = v~op1 $\\
+$transformations = \{\\ \indent AORS(v~op1, op2)~=~v~op2,\\ \indent AOIU(v)~=~-v$\\\}\\
+$constraints = \{ \\$ 
+\indent $op1~\in~\{++\}  $\\ 
+\indent $op2~\in~\{--\}  $\\ 
+\indent $v$ must start with zero \\ 
+\indent the only definition of $v$ in the program is in this line line of the $term$\\ 
+$\}$
+\\
+\\
+\textbf{D-Rule. ODL x LOI}~(\mujava{})\\
+$term = v1~:=~{\sim}exp;~b;~return~v1 $\\
+$transformations = \{\\ \indent ODL({\sim}exp)~=~exp,\\ \indent LOI(v1)~=~{\sim}v1$\\\}\\
+$constraints = \{ \\$ 
+\indent there is no definition of $v1$ in $b$, \\ 
+\indent $v1$ has a local scope \\ 
+$\}$
+\\
+\\
+\textbf{D-Rule. AOIS x CDL}~(\mujava{})\\
+$term = return~v~op1~1 $\\
+$transformations = \{\\ \indent AOIS(v,~op2)~=~op2~v,\\ \indent CDL(1)~=~;$\\\}\\
+$constraints = \{ \\$ 
+\indent $op1~\in~\{+\} $ and $op2~\in~\{--\}$, \\ 
+\indent $op1~\in~\{-\} $ and $op2~\in~\{++\}$, \\ 
+\indent $v$ has a local scope, \\ 
+\indent the use of~$v$~is the last one in its scope \\ 
+$\}$
+\\
+\\
+\textbf{D-Rule. ORU x STD}~(\major{})\\
+$term = v~:=~-v $\\
+$transformations = \{\\ \indent ORU(-)~=~+,\\ \indent STD(v~:=~-v)~=~;$\\\}\\
+\\
+\\
+\textbf{D-Rule. InlineConstant x MemberVariable}~(\pit{})\\
+$term = v~:=~v~op~1 $\\
+$transformations = \{\\ \indent InlineConstant(1)~=~0,\\ \indent MemberVariable(v~:=~v~op~1)~=~;$\\\}\\
+$constraints = \{ \\$ 
+\indent $op~\in~\{+, -\} $\\ 
+$\}$
+\\
+\\
+\textbf{D-Rule. InlineConstant x Math}*~(\pit{})\\
+$term = {\sim}v $\\
+$transformations = \{\\ 
+\indent InlineConstant({\sim}v)~=~v~\hat{~}~0x0,\\ 
+\indent Math({\sim}v)~=~v~\&~0xFFFFFFF$\\ \}\\
+$constraints = \{ \\$ 
+\indent $op~\in~\{+, -\} $\\ 
+$\}$\\
+* in byte code: ${\sim}v == v~\hat{~}~0xFFFFFFFF$
+\\
+\\
+\textbf{D-Rule. ReturnVals x NonVoidMethodCal}~(\pit{})\\
+$term = type~f1(){~b;~return~exp~};type~f2(){~v~:=~f1()~}$\\
+$transformations = \{\\ 
+\indent ReturnVals(return~exp)~=~return~defaultValue,\\ 
+\indent NonVoidMethodCal(~v~:=~f1()~)~=~v~:=~defaultValue~$\\\}\\
+$constraints = \{ \\$ 
+\indent the function $f1()$ has not side effect, \\ 
+\indent there is only one return in $f1()$, \\
+\indent there is no other place that calls $f1()$, \\ 
+$\}$\\
+\\
+\\
+\textbf{D-Rule. NonVoidMethodCall x InlineConstant}~(\pit{})\\
+$term = v~:=~f()~op~c $\\
+$transformations = \{\\ 
+\indent NonVoidMethodCall(~f()~)~=~defaultValue,\\ 
+\indent InlineConstant(~c~)~=~0$\\\}\\
+$constraints = \{ \\$ 
+\indent $op~\in~\{*\}$, \\ 
+\indent $f()$ can be any primitive numeric type \\
+$\}$\\
+\\
+\\
+\textbf{D-Rule. InlineConstant x ReturnVals}~(\pit{})\\
+$term = v~:=~c;~b;~return~v $\\
+$transformations = \{\\ 
+\indent InlineConstant(~c~)~=~0,\\ 
+\indent ReturnVals(~return~v~)~=~return~defaultValue$\\\}\\
+$constraints = \{ \\$ 
+\indent there is no definition of $v$ in $b$, \\ 
+\indent $v$ can be any primitive numeric type, \\
+\indent there is only one path from $v~:=~c$ to $return~v$ \\
+$\}$\\
+\\
+\\
+\textbf{D-Rule. MemberVariable x ReturnVals}~(\pit{})\\
+$term = type~v~:=~c;~type~f(){~return~v~} $\\
+$transformations = \{\\ 
+\indent MemberVariable(~type~v~:=~c~)~=~type~v~:=~defaultValue,\\ 
+\indent ReturnVals(~return~v~)~=~return~defaultValue$\\\}\\
+$constraints = \{ \\$ 
+\indent $v$ has only one point of definition, \\
+\indent $v$ has only one point of use \\
+$\}$\\
+\\
+\\
+\textbf{D-Rule. MemberVariable x RemoverConditional\_EQUAL\_ELSE}~(\pit{})\\
+$term = if(exp){~v~:=~exp~}$\\
+$transformations = \{\\ 
+\indent MemberVariable(~v~:=~exp~)~=~;,\\ 
+\indent RemoverConditional\_EQUAL\_ELSE(~if(exp)~)~=~if(false)$\\\}\\
+$constraints = \{ \\$ 
+\indent there is no else statements, \\ 
+\indent if expression has no side effect \\
+$\}$\\
+\\
+\\
+% \textbf{D-Rule. MemberVariable x RemoverConditional\_EQUAL\_ELSE}~(\pit{})\\
+% $term = if(exp){~v~:=~exp~}$\\
+% $transformations = \{\\ 
+% \indent MemberVariable(~v~:=~exp~)~=~;,\\ 
+% \indent RemoverConditional\_EQUAL\_ELSE(~if(exp)~)~=~if(false)$\\\}\\
+% $constraints = \{ \\$ 
+% \indent there is no else statements, \\ 
+% \indent if expression has no side effect \\
+% $\}$\\
+% \\
+% \\
+\textbf{D-Rule. MemberVariable x Math}*~(\pit{})\\
+$term = {\sim}v $\\
+$transformations = \{\\ 
+\indent MemberVariable(v)~=~{\sim}v,\\ 
+\indent Math({\sim}v)~=~v~\&~0xFFFFFFF$\\ \}\\
+* in byte code: ${\sim}v == v~\hat{~}~0xFFFFFFFF$
+\\
+\\
+\textbf{D-Rule. InvertNegs x MemberVariable}~(\pit{})\\
+$term = v~:=~-v~$\\
+$transformations = \{\\ 
+\indent InvertNegs(-v)~=~v,\\ 
+\indent MemberVariable(~v~:=~-v~)~=~;$\\\}\\
+\\
+\\
+% \textbf{D-Rule. InlineConstant x RemoverConditional\_EQUAL\_ELSE}~(\pit{})\\
+% $term = if(exp)~v~:=~v~op1~$\\
+% $transformations = \{\\ 
+% \indent InlineConstant(~1~)~=~0,\\ 
+% \indent RemoverConditional\_EQUAL\_ELSE(~if(exp)~)~=~if(false)$\\\}\\
+% $constraints = \{ \\$ 
+% \indent $op~\in~\{+. -\}$, \\ 
+% \indent $exp$ has no side effect \\
+% $\}$\\
+
+
+
+

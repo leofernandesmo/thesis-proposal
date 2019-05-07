@@ -1,0 +1,34 @@
+\chapter{Related Work}
+\label{chp:related}
+
+Addressing the equivalent mutant is not a recent problem. Baldwin and Sayward investigated some heuristics for determining equivalence of program mutations~\cite{BALDWIN:1979:1}. Previous works have been addressing this problem and surveys on this topic have been published~\cite{JIA:2011:1, MADEYISKI:2014:1}. The duplicated mutant problem is more recent, but has also been faced~\cite{PAPADAKIS:2015:1, KINTIS:2017:1}.
+
+%A lot of previous works have been fighting this problem. A good synthesis can be found in the surveys of \cite{JIA:2011:1} and \cite{MADEYISKI:2014:1}. The duplicated mutant is a more recent problem, but has also been faced \cite{PAPADAKIS:2015:1, KINTIS:2017:1}. In this section we present previous works about those problems.
+
+To tackle the equivalent mutant problem, researchers used compiler optimizations~\cite{BALDWIN:1979:1}. The intuition is that code optimization can make the original program and the mutant compiled object codes identical. Kintis et al. \cite{KINTIS:2017:1} developed the Trivial Compiler Equivalence (TCE) and used this idea in popular languages (C and Java) and mutation tools (\textsc{Milu} and \mujava{}). In our work, we selected the same Java projects to evaluate our rules. We also used \mujava{}. However, we implemented our own \mujava{} version and selected all available mutation operators. In addition, by using our strategy, we derived rules capable of identifying useless mutants that TCE could not detect.
+
+%In our work we got the same subjects of the aforementioned study and the same mutation testing tool for Java (\mujava{}). However, we used a different version of \mujava{} and selected more mutation operators. Thus, is not fair compare results. But, as can be seen in section \ref{sec:evaluation} our strategy have found mutants that TCE tool did not.
+
+%The first idea to tackle the mutant equivalence was suggested by Baldwin and Sayward \cite{BALDWIN:1979:1} through compiler optimization. The main intuition is that code optimization can transform the mutant and the original program in a way which their compiled object codes will be identical. Kintis at. al \cite{KINTIS:2017:1} developed TCE and experimented this idea in popular languages and mutation tools. 
+
+Offut and Pan~\cite{OFFUT:1996:1, OFFUT:1997:1} developed a technique to detect equivalent mutants based on mathematical constraints that introduce a set of strategies to formulate the killing conditions of the mutants. If these conditions are not feasible, the mutant is equivalent. Voas and McGraw~\cite{VOAS:1997:1} first, and Hierons et al. \cite{HIERONS:1999:1} afterwards, suggested to use program slicing to help with equivalence identification. These approaches suffer from inherent limitations in scalability of the constraint handling and slicing technology. We should have the same scalability problem in case we implement the rules that need \textit{def-use} analyses. Other studies check the impact of mutant execution and suggest non-equivalent mutants. Grun et al.~\cite{GRUN:2009:1} and Shuller and Zeller~\cite{SHULER:2010:1, SHULER:2013:1} proposed that changes in coverage can be used to detect non-equivalents mutants. Shuler et al. \cite{SHULER:2009:1} used invariants violation as a way to classify killable mutants. Regarding duplicated mutants detection, little effort has been spent on this front~\cite{PAPADAKIS:2015:1, KINTIS:2017:1}. All these aforementioned works require the generation, compilation, and analysis of the mutants to identify the useless ones. Differently, our rules are applied at the mutant generation moment, which means that the useless mutants would not be generated at all.
+
+Kintis and Malevris~\cite{KINTIS:2015:1} also avoid the equivalent mutants generation. To do so, they rely on static analysis tools. They introduce data-flow patterns and showed that a large portion of equivalent mutants can be avoided by just analyzing the original program under test. The idea of the data-flow patterns is similar to our rules. We have rules that depend on AST traversal and \textit{def-use} analyses. However, we have rules to detect duplicated mutants. In addition, we also propose a strategy to help with the task of deriving new rules. Developers of mutation testing tools can use our strategy to help them with deriving new rules and thus release better tools.
+
+Just et. al~\cite{JUST:2017:1} criticize the strategies based on reducing the number of applied mutation operators because they might work in a set of programs but not in another set. This way, depending on the program, these strategies continue to generate a high number of useless mutants. The authors conclude that, to discard some of the mutation operators, we need to first understand the program constructs to which the operators will be applied. In our work, we follow this rationale. We do not remove the mutation operators entirely to reduce costs. Rather, we can use all operators, but we avoid specific transformations defined in each rule.
+
+
+\section{Research Status}
+Here we list our improvements for Related Work section.
+
+\begin{enumerate}
+    \item We plan to extend this chapter with related work that has not been published yet or that we eventually bypassed during our research.
+\end{enumerate}
+
+
+
+%\section{Introduction}
+
+%\section{Better Discussion (RESULTS)}
+
+%\section{Next Steps: Custo/Trade-Off, Comparing with other tools like TCE}

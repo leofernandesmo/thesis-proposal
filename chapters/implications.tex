@@ -1,0 +1,18 @@
+\chapter{Implications for Practice}
+\label{chp:implications}
+
+The high cost of mutation testing is well known. 
+Our rules can contribute to the development of better tools and to decrease costs in mutation testing analysis. 
+In the end, users can benefit from mutation tools that generate less useless mutants.
+
+In addition, as programming languages evolve, new constructs are added, e.g., Java lambda. 
+In this way, developers of mutation testing tools tend (i) to create new mutation operators to cover these new language constructs and (ii) to evolve the existing operators. 
+Therefore, they could use our strategy to derive and implement rules to deal with both situations. 
+Thus, before releasing the tool, developers can improve confidence that the new version can avoid useless mutants when considering the new operators and the evolved ones. 
+However, differently from our evaluation, developers would focus on specific operators (not all available in the tool), reducing costs on carrying out our strategy.
+
+Besides new constructs, the mutation system developer can use the strategy to check if the transformation for a specific mutation operator is working as expected with a wide range of programs. 
+During the experiment, our strategy found transformation bugs in \mujava{} and \pit{} that were reported to the respective developers.
+
+%\todo{Leo, precisamos pensar e adicionar mais coisas aqui!}
+

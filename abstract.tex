@@ -1,0 +1,12 @@
+Mutation testing is a program-transformation technique that injects artificial bugs to check whether the existing test suite can detect them. 
+However, the costs of using mutation testing are usually high, hindering its use in industry. 
+Useless mutants (equivalent and duplicated) contribute to increase costs. 
+An equivalent mutant is a mutant that has the same behavior of the original program. This way, this mutant is useless. A recent discovered kind of mutant is a mutant that has the same behavior of another one. They are duplicated and thus one of them is useless. 
+Previous research has focused mainly on detecting useless mutants only after they are generated and compiled. In this work, we introduce a strategy to help developers with deriving rules to avoid the generation of useless mutants. To use our strategy, we pass as input a set of programs. For each program, we also need a green test suite and a set of mutants. As output, our strategy yields a set of useless mutants candidates. After manually confirming that the mutants classified by our strategy as ``useless'' are indeed useless, we derive rules that can avoid their generation and thus decrease costs. To the best of our knowledge, we introduce \NumberOfNewHeuristics new rules that can avoid useless mutants right before their generation. We then implement a subset of these rules in the \mujava{} mutation testing tool. Since our rules have been derived based on artificial and small Java programs, we take our \mujava{} version embedded with our rules and execute it in industrial-scale projects. Our rules reduced the number of mutants by almost 13\% on average. Our results are promising because (i) we \textit{avoid} useless mutants generation; 
+(ii) our strategy can help with identifying more rules in case we set it to use non-artificial and more complex Java programs; 
+(iii) our \mujava{} version, embedded with the rules, takes less time to create and compile the mutants than the original version;
+and (iv) we implement only a subset of the rules we derived. 
+
+\begin{keywords}
+Software Engineering, Software Testing, Mutation Testing, Useless Mutants
+\end{keywords}
